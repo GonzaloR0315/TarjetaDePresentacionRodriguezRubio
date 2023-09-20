@@ -45,8 +45,8 @@ class MainActivity : ComponentActivity() {
 
                 ) {
                     GreetingImage(
-                        getString(R.string.queHacen),
-                        getString(R.string.estosDelfines)
+                        getString(R.string.nombre),
+                        getString(R.string.daniel)
                     )
                 }
             }
@@ -79,7 +79,8 @@ fun GreetingText(message: String, from: String, modifier: Modifier) {
         modifier = modifier
     ) {
         Row {
-            val image = painterResource(R.drawable.delfines)
+            val image = painterResource(R.drawable.presentacion)
+
             Image(
                 painter = image,
                 contentDescription = null,
@@ -89,44 +90,51 @@ fun GreetingText(message: String, from: String, modifier: Modifier) {
             )
         }
         Row {
+            val image2 = painterResource(R.drawable.icononombre)
+            Image(
+                painter = image2,
+                contentDescription = null,
+                contentScale = ContentScale.Inside,
+                modifier = Modifier.aspectRatio(1.7f)
+
+            )
+
+            Text(
+                text = message,
+                fontWeight = FontWeight.Bold,
+                fontSize = 25.sp,
+                lineHeight = 50.sp,
+                textAlign = TextAlign.Center,
+                modifier = Modifier
+            )
+            Text(
+                text = from,
+                fontStyle = FontStyle.Italic,
+                fontSize = 18.sp,
+                modifier = Modifier
 
 
-        Text(
-            text = message,
-            fontWeight = FontWeight.Bold,
-            fontSize = 50.sp,
-            lineHeight = 116.sp,
-            textAlign = TextAlign.Center,
-            modifier = Modifier
-        )
-        Text(
-            text = from,
-            fontStyle = FontStyle.Italic,
-            fontSize = 36.sp,
-            modifier = Modifier
-
-
-        )
+            )
         }
         Row {
 
 
-        Text(
-            text = message,
-            fontWeight = FontWeight.Bold,
-            fontSize = 50.sp,
-            lineHeight = 116.sp,
-            textAlign = TextAlign.Center,
-            modifier = Modifier
-        )
-        Text(
-            text = from,
-            fontStyle = FontStyle.Italic,
-            fontSize = 36.sp,
-            modifier = Modifier
+            Text(
+                text = message,
+                fontWeight = FontWeight.Bold,
+                fontSize = 40.sp,
+                lineHeight = 50.sp,
+                textAlign = TextAlign.Center,
+                modifier = Modifier
+            )
+            Text(
+                text = from,
+                fontStyle = FontStyle.Italic,
+                fontSize = 20.sp,
+                modifier = Modifier
 
 
-        )}
+            )}
     }
 }
 
