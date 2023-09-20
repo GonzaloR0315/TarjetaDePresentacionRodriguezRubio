@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">TarjetaDePresentacionRodriguezRubio</string>
+    <string name="queHacen">¿Que hacer?</string>
+    <string name="estosDelfines">estos delfines</string>
 </resources>
