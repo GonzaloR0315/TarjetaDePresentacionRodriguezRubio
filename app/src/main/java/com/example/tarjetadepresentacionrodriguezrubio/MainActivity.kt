@@ -17,6 +17,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
@@ -45,23 +46,27 @@ class MainActivity : ComponentActivity() {
 }
 @Composable
 fun GreetingImage(message: String, from: String, modifier: Modifier = Modifier) {
-    val image = painterResource(R.drawable.delfines)
+    val image = painterResource(R.drawable.presentacion)
     //Step 3 create a box to overlap image and texts
-    Box {
-        Image(
-            painter = image,
-            contentDescription = null,
-            contentScale = ContentScale.FillBounds,
-            alpha = 1F,
-        )
-        GreetingText(
-            message = message,
-            from = from,
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(8.dp)
-        )
-    }
+        Column(verticalArrangement = Arrangement.Top, modifier = Modifier) {
+            Image(
+                painter = image,
+                contentDescription = null,
+                contentScale = ContentScale.FillBounds,
+                alpha = 1F,
+                modifier = Modifier
+                   // .align(alignment = Alignment.TopCenter)
+            )
+        }
+        Column(verticalArrangement = Arrangement.Center, modifier = Modifier) {
+            GreetingText(
+                message = message,
+                from = from,
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(8.dp)
+            )
+        }
 }
 
 @Composable
@@ -72,7 +77,6 @@ fun GreetingText(message: String, from: String, modifier: Modifier) {
     ) {
         Text(
             text = message,
-            //textDecoration = ,
             fontSize = 50.sp,
             lineHeight = 116.sp,
             textAlign = TextAlign.Center,
