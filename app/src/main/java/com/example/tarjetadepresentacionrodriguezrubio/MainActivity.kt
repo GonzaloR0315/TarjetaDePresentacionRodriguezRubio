@@ -1,11 +1,8 @@
 package com.example.tarjetadepresentacionrodriguezrubio
 
-import android.graphics.ColorSpace.Rgb
 import android.os.Bundle
-import android.view.animation.Animation
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.animation.AnimatedContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -19,7 +16,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -27,7 +23,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -45,8 +40,9 @@ class MainActivity : ComponentActivity() {
 
                 ) {
                     GreetingImage(
-                        getString(R.string.nombre),
-                        getString(R.string.daniel)
+                        getString(R.string.nombre) + ": ",
+                        getString(R.string.daniel),
+                        getString(R.string.gonzalo)
                     )
                 }
             }
@@ -54,7 +50,7 @@ class MainActivity : ComponentActivity() {
     }
 }
 @Composable
-fun GreetingImage(message: String, from: String, modifier: Modifier = Modifier) {
+fun GreetingImage(message: String, from: String, last: String, modifier: Modifier = Modifier) {
     //Step 3 create a box to overlap image and texts
     Box (modifier = Modifier
         .background(color = Color(red = 158 , green = 157 , blue = 153 ))
@@ -63,7 +59,7 @@ fun GreetingImage(message: String, from: String, modifier: Modifier = Modifier) 
         GreetingText(
             message = message,
             from = from,
-
+            last = last,
             modifier = Modifier
                 .fillMaxSize()
                 .padding(8.dp)
@@ -72,13 +68,15 @@ fun GreetingImage(message: String, from: String, modifier: Modifier = Modifier) 
     }
 }
 
+
+
 @Composable
-fun GreetingText(message: String, from: String, modifier: Modifier) {
+fun GreetingText(message: String, from: String, last: String, modifier: Modifier) {
     Column(
-        verticalArrangement = Arrangement.Center,
+        verticalArrangement = Arrangement.SpaceEvenly,
         modifier = modifier
     ) {
-        Row {
+        Row{
             val image = painterResource(R.drawable.presentacion)
 
             Image(
@@ -94,8 +92,8 @@ fun GreetingText(message: String, from: String, modifier: Modifier) {
             Image(
                 painter = image2,
                 contentDescription = null,
-                contentScale = ContentScale.Inside,
-                modifier = Modifier.aspectRatio(1.7f)
+                /*contentScale = ContentScale.Inside,
+                modifier = Modifier.aspectRatio(1.7f)*/
             )
             Text(
                 text = message,
@@ -108,32 +106,55 @@ fun GreetingText(message: String, from: String, modifier: Modifier) {
             Text(
                 text = from,
                 fontStyle = FontStyle.Italic,
-                fontSize = 12.sp,
+                fontSize = 20.sp,
                 modifier = Modifier
             )
         }
         Row {
-            val image2 = painterResource(R.drawable.icononombre)
-            Image(
-                painter = image2,
-                contentDescription = null,
-                contentScale = ContentScale.Inside,
-                modifier = Modifier.aspectRatio(1.7f)
-            )
-            Text(
-                text = message,
-                fontWeight = FontWeight.Bold,
-                fontSize = 40.sp,
-                lineHeight = 50.sp,
-                textAlign = TextAlign.Center,
-                modifier = Modifier
-            )
-            Text(
-                text = from,
-                fontStyle = FontStyle.Italic,
-                fontSize = 20.sp,
-                modifier = Modifier
-            )}
+            Column {
+
+                Row {
+
+                    val image2 = painterResource(R.drawable.icononombre)
+                    Image(
+                        painter = image2,
+                        contentDescription = null,
+                        /*contentScale = ContentScale.Inside,
+                        modifier = Modifier.aspectRatio(1.7f)*/
+                    )
+                    Text(
+                        text = message,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 20.sp,
+                        lineHeight = 50.sp,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier
+                    )
+                    Text(
+                        text = last,
+                        fontStyle = FontStyle.Italic,
+                        fontSize = 20.sp,
+                        modifier = Modifier
+                    )
+                }
+                Row {
+                    Text(
+                        text = "Cargo: ",
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 20.sp,
+                        lineHeight = 50.sp,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier
+                    )
+                    Text(
+                        text = "Delegado",
+                        fontStyle = FontStyle.Italic,
+                        fontSize = 20.sp,
+                        modifier = Modifier
+                    )
+                }
+            }
+            }
     }
 }
 
@@ -141,6 +162,6 @@ fun GreetingText(message: String, from: String, modifier: Modifier) {
 @Composable
 fun GreetingPreview() {
     TarjetaDePresentacionRodriguezRubioTheme {
-        GreetingImage("Happy Birthday Sam!", "From Emma")
+        GreetingImage("Nombres" + ": ", "Daniel Rodriguez" , "Gonzalo Rubio")
     }
 }
