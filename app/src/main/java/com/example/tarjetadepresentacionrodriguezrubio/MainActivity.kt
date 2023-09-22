@@ -96,13 +96,11 @@ fun GreetingText(message: String, from: String, modifier: Modifier) {
                 contentDescription = null,
                 contentScale = ContentScale.Inside,
                 modifier = Modifier.aspectRatio(1.7f)
-
             )
-
             Text(
                 text = message,
                 fontWeight = FontWeight.Bold,
-                fontSize = 25.sp,
+                fontSize = 20.sp,
                 lineHeight = 50.sp,
                 textAlign = TextAlign.Center,
                 modifier = Modifier
@@ -110,15 +108,18 @@ fun GreetingText(message: String, from: String, modifier: Modifier) {
             Text(
                 text = from,
                 fontStyle = FontStyle.Italic,
-                fontSize = 18.sp,
+                fontSize = 12.sp,
                 modifier = Modifier
-
-
             )
         }
         Row {
-
-
+            val image2 = painterResource(R.drawable.icononombre)
+            Image(
+                painter = image2,
+                contentDescription = null,
+                contentScale = ContentScale.Inside,
+                modifier = Modifier.aspectRatio(1.7f)
+            )
             Text(
                 text = message,
                 fontWeight = FontWeight.Bold,
@@ -132,8 +133,6 @@ fun GreetingText(message: String, from: String, modifier: Modifier) {
                 fontStyle = FontStyle.Italic,
                 fontSize = 20.sp,
                 modifier = Modifier
-
-
             )}
     }
 }
