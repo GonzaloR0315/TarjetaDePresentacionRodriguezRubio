@@ -3,4 +3,9 @@
     <string name="nombre">Nombres</string>
     <string name="daniel">Daniel Rodriguez</string>
     <string name="gonzalo">Gonzalo Rubio</string>
+    <string name="cargo">Cargo: </string>
+    <string name="delega">Delegado</string>
+    <string name="subDelega">Subdelegado</string>
+    <string name="curso">Curso: </string>
+    <string name="wem">3º WEM</string>
 </resources>

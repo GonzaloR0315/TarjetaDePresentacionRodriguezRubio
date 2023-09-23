@@ -1,6 +1,7 @@
 package com.example.tarjetadepresentacionrodriguezrubio
 
 import android.os.Bundle
+import android.provider.Settings.Global.getString
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
@@ -42,7 +43,12 @@ class MainActivity : ComponentActivity() {
                     GreetingImage(
                         getString(R.string.nombre) + ": ",
                         getString(R.string.daniel),
-                        getString(R.string.gonzalo)
+                        getString(R.string.gonzalo),
+                        getString(R.string.cargo),
+                        getString(R.string.delega),
+                        getString(R.string.subDelega),
+                        getString(R.string.curso),
+                        getString(R.string.wem),
                     )
                 }
             }
@@ -50,7 +56,9 @@ class MainActivity : ComponentActivity() {
     }
 }
 @Composable
-fun GreetingImage(message: String, from: String, last: String, modifier: Modifier = Modifier) {
+fun GreetingImage(message: String, from: String, last: String,
+                  cargo: String,delega: String,subDelega: String,
+                  curso: String,wem: String,modifier: Modifier = Modifier) {
     //Step 3 create a box to overlap image and texts
     Box (modifier = Modifier
         .background(color = Color(red = 158 , green = 157 , blue = 153 ))
@@ -60,6 +68,11 @@ fun GreetingImage(message: String, from: String, last: String, modifier: Modifie
             message = message,
             from = from,
             last = last,
+            cargo = cargo,
+            delega = delega,
+            subDelega = subDelega,
+            curso = curso,
+            wem = wem,
             modifier = Modifier
                 .fillMaxSize()
                 .padding(8.dp)
@@ -71,7 +84,9 @@ fun GreetingImage(message: String, from: String, last: String, modifier: Modifie
 
 
 @Composable
-fun GreetingText(message: String, from: String, last: String, modifier: Modifier) {
+fun GreetingText(message: String, from: String, last: String,
+                 cargo: String,delega: String,subDelega: String,
+                 curso: String,wem: String,modifier: Modifier = Modifier) {
     Column(
         verticalArrangement = Arrangement.SpaceEvenly,
         modifier = modifier
@@ -88,40 +103,17 @@ fun GreetingText(message: String, from: String, last: String, modifier: Modifier
             )
         }
         Row {
-            val image2 = painterResource(R.drawable.icononombre)
-            Image(
-                painter = image2,
-                contentDescription = null,
-                /*contentScale = ContentScale.Inside,
-                modifier = Modifier.aspectRatio(1.7f)*/
-            )
-            Text(
-                text = message,
-                fontWeight = FontWeight.Bold,
-                fontSize = 20.sp,
-                lineHeight = 50.sp,
-                textAlign = TextAlign.Center,
-                modifier = Modifier
-            )
-            Text(
-                text = from,
-                fontStyle = FontStyle.Italic,
-                fontSize = 20.sp,
-                modifier = Modifier
-            )
-        }
-        Row {
             Column {
-
+                val image2 = painterResource(R.drawable.icononombre)
+                Image(
+                    painter = image2,
+                    contentDescription = null,
+                    /*contentScale = ContentScale.Inside,
+                    modifier = Modifier.aspectRatio(1.7f)*/
+                )
                 Row {
 
-                    val image2 = painterResource(R.drawable.icononombre)
-                    Image(
-                        painter = image2,
-                        contentDescription = null,
-                        /*contentScale = ContentScale.Inside,
-                        modifier = Modifier.aspectRatio(1.7f)*/
-                    )
+
                     Text(
                         text = message,
                         fontWeight = FontWeight.Bold,
@@ -139,7 +131,7 @@ fun GreetingText(message: String, from: String, last: String, modifier: Modifier
                 }
                 Row {
                     Text(
-                        text = "Cargo: ",
+                        text = cargo,
                         fontWeight = FontWeight.Bold,
                         fontSize = 20.sp,
                         lineHeight = 50.sp,
@@ -147,21 +139,100 @@ fun GreetingText(message: String, from: String, last: String, modifier: Modifier
                         modifier = Modifier
                     )
                     Text(
-                        text = "Delegado",
+                        text = delega,
+                        fontStyle = FontStyle.Italic,
+                        fontSize = 20.sp,
+                        modifier = Modifier
+                    )
+                }
+                Row {
+                    Text(
+                        text = curso,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 20.sp,
+                        lineHeight = 50.sp,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier
+                    )
+                    Text(
+                        text = wem,
                         fontStyle = FontStyle.Italic,
                         fontSize = 20.sp,
                         modifier = Modifier
                     )
                 }
             }
+        }
+        Row {
+            Column {
+                val image2 = painterResource(R.drawable.icononombre)
+                Image(
+                    painter = image2,
+                    contentDescription = null,
+                    /*contentScale = ContentScale.Inside,
+                    modifier = Modifier.aspectRatio(1.7f)*/
+                )
+                Row {
+
+
+                    Text(
+                        text = message,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 20.sp,
+                        lineHeight = 50.sp,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier
+                    )
+                    Text(
+                        text = from,
+                        fontStyle = FontStyle.Italic,
+                        fontSize = 20.sp,
+                        modifier = Modifier
+                    )
+                }
+                Row {
+                    Text(
+                        text = cargo,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 20.sp,
+                        lineHeight = 50.sp,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier
+                    )
+                    Text(
+                        text = subDelega,
+                        fontStyle = FontStyle.Italic,
+                        fontSize = 20.sp,
+                        modifier = Modifier
+                    )
+                }
+                Row {
+                    Text(
+                        text = curso,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 20.sp,
+                        lineHeight = 50.sp,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier
+                    )
+                    Text(
+                        text = wem,
+                        fontStyle = FontStyle.Italic,
+                        fontSize = 20.sp,
+                        modifier = Modifier
+                    )
+                }
             }
+        }
     }
 }
+
+
 
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
     TarjetaDePresentacionRodriguezRubioTheme {
-        GreetingImage("Nombres" + ": ", "Daniel Rodriguez" , "Gonzalo Rubio")
+      //  GreetingImage("Nombres" + ": ", "Daniel Rodriguez" , "Gonzalo Rubio")
     }
 }
